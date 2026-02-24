@@ -1,7 +1,7 @@
 sortvis
 =======
 A sorting visualizer made in Godot Engine. In competition against
-[Space's sort-visualizer'](https://github.com/SpaceTurtle-git/sort-visualizer).
+[Space's sort-visualizer](https://github.com/SpaceTurtle-git/sort-visualizer).
 
 Installation Prerequisite
 -------------------------
