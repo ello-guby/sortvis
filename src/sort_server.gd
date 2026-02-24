@@ -38,7 +38,7 @@ var _t := 0.0 # time
 func _ready() -> void:
 	data.clear()
 	for i in range(resolution):
-		data.append(i)
+		data.append(i + 1)
 	shuffle()
 
 func _process(delta: float) -> void:
