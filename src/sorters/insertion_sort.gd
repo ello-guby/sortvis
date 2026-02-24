@@ -1,3 +1,4 @@
+@icon("uid://4awji48k3erg")
 class_name InsertionSort extends Sorter
 ## A sorter that take index and find it place.
 
