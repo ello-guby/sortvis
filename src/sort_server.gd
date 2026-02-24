@@ -104,6 +104,7 @@ func reverse_swap() -> void:
 func shuffle() -> void:
 	data.shuffle()
 	swap_history.clear()
+	data_highlight.clear()
 	ticked = 0
 	done = false
 	_t = abs(tick_speed)
