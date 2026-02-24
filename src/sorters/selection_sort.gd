@@ -1,3 +1,4 @@
+@icon("uid://bfktj2n7ajnbi")
 class_name SelectionSort extends Sorter
 ## Sorter that find the smallest and put it below.
 
