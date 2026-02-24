@@ -60,6 +60,7 @@ func _ready() -> void:
 	shuffle.pressed.connect(server.shuffle)
 	sorter_type.item_selected.connect(func(idx: int):
 		server.sorter = sorters.get(idx)
+		server.shuffle()
 	)
 	ignore_visup.toggled.connect(func(tog: bool):
 		server.ignore_visup = tog
