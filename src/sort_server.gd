@@ -65,7 +65,8 @@ func sort_step() -> Vector2i:
 				done = true
 				sorter._data_done(data.duplicate(), data_highlight)
 			Sorter.VISUP:
-				pass
+				if not ignore_visup:
+					ticked += 1
 			_:
 				swap(swp.x, swp.y)
 		return swp
