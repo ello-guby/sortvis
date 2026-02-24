@@ -1,0 +1,31 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
+[application]
+
+config/name="sortvis"
+config/description="Sorting Visualizer"
+run/main_scene="uid://bev8yienk7bt1"
+config/features=PackedStringArray("4.6", "Forward Plus")
+config/icon="uid://1ohdm6vxstbq"
+
+[debug]
+
+gdscript/warnings/shadowed_variable=0
+gdscript/warnings/shadowed_global_identifier=0
+gdscript/warnings/integer_division=0
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0.14117648, 0.15294118, 0.22745098, 1)
