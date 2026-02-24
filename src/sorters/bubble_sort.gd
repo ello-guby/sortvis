@@ -1,4 +1,4 @@
-@icon("res://share/icons/Bubble.svg")
+@icon("uid://bikj37smbw5mk")
 class_name BubbleSort extends Sorter
 ## A sorter that sort sweeply.
 
