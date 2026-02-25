@@ -8,7 +8,7 @@ signal resolution_changed(new_resolution: int)
 @export var sorter: Sorter
 ## The size of the data
 @export var resolution: int = 10:
-	set(v): resolution = v; _ready(); resolution_changed.emit(v)
+	set(v): resolution = v; redata(); resolution_changed.emit(v)
 ## Time it take to do another sort step
 @export var tick_speed: float = 1.0:
 	set(v): tick_speed = v; _t = abs(tick_speed)
@@ -36,10 +36,14 @@ var data_highlight: Dictionary[int, Color] = {}
 var _t := 0.0 # time
 
 func _ready() -> void:
+	redata()
+	shuffle()
+
+## Reload data to the size of [member resolution]
+func redata() -> void:
 	data.clear()
 	for i in range(resolution):
 		data.append(i + 1)
-	shuffle()
 
 func _process(delta: float) -> void:
 	if not paused:
