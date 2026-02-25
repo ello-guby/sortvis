@@ -5,7 +5,12 @@ class_name SortServer extends Node
 signal resolution_changed(new_resolution: int)
 
 ## The sorter.
-@export var sorter: Sorter
+@export var sorter: Sorter:
+	set(v):
+		sorter = v
+		redata()
+		if sorter:
+			sorter._data_init(data.duplicate())
 ## List of sorters. if empty on ready, populate with [method Lib.probe_sorters].
 @export var sorters: Array[Sorter] = []
 ## The size of the data
