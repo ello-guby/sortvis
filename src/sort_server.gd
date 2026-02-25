@@ -37,7 +37,6 @@ var _t := 0.0 # time
 
 func _ready() -> void:
 	redata()
-	shuffle()
 
 ## Reload data to the size of [member resolution]
 func redata() -> void:
