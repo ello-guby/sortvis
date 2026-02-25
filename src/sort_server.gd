@@ -6,11 +6,7 @@ signal resolution_changed(new_resolution: int)
 
 ## The sorter.
 @export var sorter: Sorter:
-	set(v):
-		sorter = v
-		redata()
-		if sorter:
-			sorter._data_init(data.duplicate())
+	set(v): sorter = v; redata()
 ## List of sorters. if empty on ready, populate with [method Lib.probe_sorters].
 @export var sorters: Array[Sorter] = []
 ## The size of the data
@@ -60,6 +56,8 @@ func redata() -> void:
 	ticked = 0
 	done = false
 	_t = abs(tick_speed)
+	
+	if sorter: sorter._data_init(data.duplicate())
 
 func _process(delta: float) -> void:
 	if not paused:
