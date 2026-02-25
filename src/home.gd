@@ -1,7 +1,5 @@
 extends Control
 
-var sorters: Array[Sorter] = []
-
 @onready var panel: PanelContainer = $Panel
 @onready var tick: Button = $Panel/Control/MainBox/UniBox/SwitchBox/Tick
 @onready var reverse_tick: Button = $Panel/Control/MainBox/UniBox/SwitchBox/ReverseTick
@@ -23,11 +21,8 @@ func _ready() -> void:
 	_up()
 	server.resolution_changed.connect(_up.unbind(1))
 	
-	# init sorters
-	sorters = Lib.probe_sorters()
-	
 	sorter_type.clear()
-	for sorter in sorters:
+	for sorter in server.sorters:
 		var s = sorter.get_script()
 		if s is GDScript:
 			var nom = s.get_global_name().capitalize()
@@ -37,7 +32,7 @@ func _ready() -> void:
 				sorter_type.add_icon_item(load(mat.get_string("icon")), nom)
 			else:
 				sorter_type.add_icon_item(preload("uid://1ohdm6vxstbq"), nom)
-	server.sorter = sorters[0]
+	server.sorter = server.sorters[0]
 	
 	# control connections
 	pause_resume.pressed.connect(func():
@@ -58,10 +53,7 @@ func _ready() -> void:
 		server.resolution = int(v)
 	)
 	shuffle.pressed.connect(server.shuffle)
-	sorter_type.item_selected.connect(func(idx: int):
-		server.sorter = sorters.get(idx)
-		server.shuffle()
-	)
+	sorter_type.item_selected.connect(server.change_sorter)
 	ignore_visup.toggled.connect(func(tog: bool):
 		server.ignore_visup = tog
 	)
