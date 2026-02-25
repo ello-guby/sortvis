@@ -117,3 +117,22 @@ func shuffle() -> void:
 	done = false
 	_t = abs(tick_speed)
 	if sorter: sorter._data_init(data.duplicate())
+
+## Change [member sorter] with a sorter matching [param idx_or_name] in [member sorters].
+## Return successness.
+func change_sorter(idx_or_name: Variant) -> bool:
+	var s: Sorter = null
+	match typeof(idx_or_name):
+		TYPE_INT:
+			s = sorters.get(idx_or_name)
+		TYPE_STRING:
+			for sort in sorters:
+				var src = sort.get_script()
+				if src is Script:
+					if src.get_global_name().similarity(idx_or_name) > 0.5:
+						s = sort
+						break
+	if s:
+		sorter = s
+		return true
+	return false
