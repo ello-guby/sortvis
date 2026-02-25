@@ -45,9 +45,16 @@ func _ready() -> void:
 
 ## Reload data to the size of [member resolution]
 func redata() -> void:
+	swap_history.clear()
+	data_highlight.clear()
+	
 	data.clear()
 	for i in range(resolution):
 		data.append(i + 1)
+	
+	ticked = 0
+	done = false
+	_t = abs(tick_speed)
 
 func _process(delta: float) -> void:
 	if not paused:
@@ -110,12 +117,8 @@ func reverse_swap() -> void:
 
 ## Shuffle [member data].
 func shuffle() -> void:
+	redata()
 	data.shuffle()
-	swap_history.clear()
-	data_highlight.clear()
-	ticked = 0
-	done = false
-	_t = abs(tick_speed)
 	if sorter: sorter._data_init(data.duplicate())
 
 ## Change [member sorter] with a sorter matching [param idx_or_name] in [member sorters].
