@@ -6,6 +6,8 @@ signal resolution_changed(new_resolution: int)
 
 ## The sorter.
 @export var sorter: Sorter
+## List of sorters. if empty on ready, populate with [method Lib.probe_sorters].
+@export var sorters: Array[Sorter] = []
 ## The size of the data
 @export var resolution: int = 10:
 	set(v): resolution = v; redata(); resolution_changed.emit(v)
@@ -36,6 +38,9 @@ var data_highlight: Dictionary[int, Color] = {}
 var _t := 0.0 # time
 
 func _ready() -> void:
+	if not sorters:
+		sorters = Lib.probe_sorters()
+	
 	redata()
 
 ## Reload data to the size of [member resolution]
