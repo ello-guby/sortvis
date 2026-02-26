@@ -5,7 +5,8 @@ class_name SortServerDataMonitor extends Control
 @export var server: SortServer
 
 ## Zoom level.
-@export var zoom := 1.0
+@export var zoom := 1.0:
+	set(v): zoom = clampf(v, 1.0 / server.data.size(), 1.0)
 ## Scroll.
 @export var scroll := 0.0
 
