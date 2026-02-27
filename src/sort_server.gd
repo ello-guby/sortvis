@@ -14,13 +14,13 @@ signal resolution_changed(new_resolution: int)
 	set(v): resolution = v; redata(); resolution_changed.emit(v)
 ## Time it take to do another sort step
 @export var tick_speed: float = 1.0:
-	set(v): tick_speed = v; _t = abs(tick_speed)
+	set(v): tick_speed = v; _t = tick_delta()
 ## If [code]true[/code], skip step that return [constant Sorter.VISUP],
 ## fast forward to step that reutrn swap.
 @export var ignore_visup: bool = false
 ## Wheather is paused
 @export var paused: bool = true:
-	set(v): paused = v; _t = abs(tick_speed)
+	set(v): paused = v; _t = tick_delta()
 ## How many times it ticked from [method shuffle]
 var ticked: int = 0
 ## At which index the pop occur.
@@ -55,7 +55,7 @@ func redata() -> void:
 	
 	ticked = 0
 	done = false
-	_t = abs(tick_speed)
+	_t = tick_delta()
 	
 	if sorter: sorter._data_init(data.duplicate())
 
@@ -65,12 +65,12 @@ func _process(delta: float) -> void:
 	
 	if tick_speed >= 0:
 		while _t <= 0:
-			_t += abs(tick_speed)
+			_t += tick_delta()
 			if sort_step() == Sorter.VISUP and ignore_visup:
-				_t -= abs(tick_speed)
+				_t -= tick_delta()
 	else:
 		while _t <= 0:
-			_t += abs(tick_speed)
+			_t += tick_delta()
 			reverse_swap()
 
 ## Sort [member data] by one step. Return the swapped.
@@ -123,6 +123,10 @@ func shuffle() -> void:
 	redata()
 	data.shuffle()
 	if sorter: sorter._data_init(data.duplicate())
+
+## Get [member tick_speed] in delta time.
+func tick_delta() -> float:
+	return 1 / abs(tick_speed)
 
 ## Change [member sorter] with a sorter matching [param idx_or_name] in [member sorters].
 ## Return successness.

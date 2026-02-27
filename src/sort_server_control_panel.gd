@@ -177,7 +177,7 @@ func _ready() -> void:
 	_tick.pressed.connect(server.sort_step)
 	
 	_speed.value_changed.connect(func(v: float):
-		server.tick_speed = 1 / v
+		server.tick_speed = v
 	)
 	
 	_reso.value_changed.connect(func(v: int):
@@ -238,8 +238,7 @@ func _up() -> void:
 		preload("uid://dn5g1bbhej5g6"),
 	][int(server.paused)]
 	
-	# ok dude, i dunno how to reverse this....
-	#_speed.set_value_no_signal(server.tick_speed)
+	_speed.set_value_no_signal(server.tick_speed)
 	_reso.set_value_no_signal(server.resolution)
 	
 	_type.clear()
