@@ -1,3 +1,4 @@
+@icon("uid://d228q8lra8tt1")
 class_name QuickSort extends Sorter
 ## A sorter thats quick.
 ##
