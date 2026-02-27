@@ -1,44 +1,8 @@
 [gd_scene format=3 uid="uid://bev8yienk7bt1"]
 
-[ext_resource type="Script" uid="uid://b3fr4jahijx1d" path="res://src/home.gd" id="1_qu6wu"]
 [ext_resource type="Script" uid="uid://dfmjeeyraehmm" path="res://src/sort_server.gd" id="2_mc1pk"]
-[ext_resource type="Texture2D" uid="uid://c2eyuio8be8e6" path="res://share/icons/PlayBack.svg" id="4_quegv"]
-[ext_resource type="Texture2D" uid="uid://ihh5vwuovp7w" path="res://share/icons/Flip.svg" id="5_b3q0i"]
-[ext_resource type="Texture2D" uid="uid://dn5g1bbhej5g6" path="res://share/icons/Play.svg" id="6_r1dqo"]
-[ext_resource type="Texture2D" uid="uid://d1risp5b75d7j" path="res://share/icons/PlayStart.svg" id="7_i0hkl"]
-[ext_resource type="Texture2D" uid="uid://57dk5h47uwwd" path="res://share/icons/Timer.svg" id="8_p70dd"]
-[ext_resource type="Texture2D" uid="uid://bcjswls8xtntk" path="res://share/icons/Resolutions.svg" id="9_m3mfx"]
-[ext_resource type="Texture2D" uid="uid://c4a42j6omjfct" path="res://share/icons/Shuffle.svg" id="10_0riwu"]
-[ext_resource type="Texture2D" uid="uid://bu8eomdfykgyw" path="res://share/icons/Progress1.svg" id="11_bo8i8"]
-[ext_resource type="Texture2D" uid="uid://1ohdm6vxstbq" path="res://share/icons/Sorter.svg" id="12_sa8g0"]
-[ext_resource type="Texture2D" uid="uid://d3smin12wqlet" path="res://share/icons/Zoom.svg" id="13_qcb6k"]
-[ext_resource type="Texture2D" uid="uid://h8dqp188myqi" path="res://share/icons/IgnoreVisup.svg" id="13_qu6wu"]
-[ext_resource type="Script" uid="uid://b6dixu08hmcdq" path="res://src/classes/zoomer.gd" id="14_5m3lx"]
+[ext_resource type="Script" uid="uid://bmhhmh5hgedva" path="res://src/sort_server_control_panel.gd" id="3_1kw81"]
 [ext_resource type="Script" uid="uid://bempv4jv4tt38" path="res://src/sort_server_data_monitor.gd" id="15_0c6sh"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xcibn"]
-content_margin_left = 10.0
-content_margin_top = 10.0
-content_margin_right = 10.0
-content_margin_bottom = 10.0
-bg_color = Color(0.14117648, 0.15294118, 0.22745098, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-shadow_color = Color(0, 0, 0, 0.16800001)
-shadow_size = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p6r8x"]
-content_margin_left = 8.0
-content_margin_top = 0.0
-content_margin_right = 8.0
-content_margin_bottom = 0.0
-bg_color = Color(0.11372549, 0.12156863, 0.14901961, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
 
 [node name="Home" type="Control" unique_id=261776052]
 layout_mode = 3
@@ -47,7 +11,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_qu6wu")
 
 [node name="SortServer" type="Node" parent="." unique_id=1643379186]
 script = ExtResource("2_mc1pk")
@@ -63,233 +26,14 @@ grow_vertical = 2
 script = ExtResource("15_0c6sh")
 server = NodePath("../SortServer")
 
-[node name="Panel" type="PanelContainer" parent="." unique_id=434244998]
-layout_mode = 1
-offset_left = 34.0
-offset_top = 34.0
-offset_right = 350.0
-offset_bottom = 202.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_xcibn")
-
-[node name="Control" type="VBoxContainer" parent="Panel" unique_id=25575117]
-layout_mode = 2
-
-[node name="MainBox" type="HBoxContainer" parent="Panel/Control" unique_id=864344821]
-layout_mode = 2
-
-[node name="UniBox" type="VBoxContainer" parent="Panel/Control/MainBox" unique_id=1809670399]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 4.0
-
-[node name="SwitchBox" type="HBoxContainer" parent="Panel/Control/MainBox/UniBox" unique_id=122859283]
-layout_mode = 2
-
-[node name="ReverseTick" type="Button" parent="Panel/Control/MainBox/UniBox/SwitchBox" unique_id=438066392]
-layout_mode = 2
-size_flags_horizontal = 3
-tooltip_text = "Undo"
-icon = ExtResource("4_quegv")
-icon_alignment = 1
-
-[node name="Flip" type="Button" parent="Panel/Control/MainBox/UniBox/SwitchBox" unique_id=1439585718]
-layout_mode = 2
-tooltip_text = "Flip Speed"
-icon = ExtResource("5_b3q0i")
-
-[node name="PauseResume" type="Button" parent="Panel/Control/MainBox/UniBox/SwitchBox" unique_id=921901018]
-layout_mode = 2
-tooltip_text = "Pause/Resume"
-icon = ExtResource("6_r1dqo")
-
-[node name="Tick" type="Button" parent="Panel/Control/MainBox/UniBox/SwitchBox" unique_id=690796211]
-layout_mode = 2
-size_flags_horizontal = 3
-tooltip_text = "Step Forward"
-icon = ExtResource("7_i0hkl")
-icon_alignment = 1
-
-[node name="SpeedBox" type="HBoxContainer" parent="Panel/Control/MainBox/UniBox" unique_id=1880972988]
-layout_mode = 2
-
-[node name="IconBox" type="AspectRatioContainer" parent="Panel/Control/MainBox/UniBox/SpeedBox" unique_id=883699527]
-layout_mode = 2
-
-[node name="SpeedIcon" type="Button" parent="Panel/Control/MainBox/UniBox/SpeedBox/IconBox" unique_id=926579483]
-layout_mode = 2
-tooltip_text = "Tick Per Second"
-icon = ExtResource("8_p70dd")
-flat = true
-
-[node name="Speed" type="SpinBox" parent="Panel/Control/MainBox/UniBox/SpeedBox" unique_id=551576952]
-layout_mode = 2
-size_flags_horizontal = 3
-value = 1.0
-allow_greater = true
-allow_lesser = true
-alignment = 2
-suffix = "/s"
-
-[node name="ResolutionBox" type="HBoxContainer" parent="Panel/Control/MainBox/UniBox" unique_id=330640372]
-layout_mode = 2
-
-[node name="IconBox" type="AspectRatioContainer" parent="Panel/Control/MainBox/UniBox/ResolutionBox" unique_id=1891307878]
-layout_mode = 2
-
-[node name="ResolutionIcon2" type="Button" parent="Panel/Control/MainBox/UniBox/ResolutionBox/IconBox" unique_id=1178353170]
-layout_mode = 2
-tooltip_text = "Data Size"
-icon = ExtResource("9_m3mfx")
-flat = true
-
-[node name="Resolution" type="SpinBox" parent="Panel/Control/MainBox/UniBox/ResolutionBox" unique_id=1093883280]
-layout_mode = 2
-size_flags_horizontal = 3
-value = 10.0
-rounded = true
-allow_greater = true
-alignment = 2
-
-[node name="Shuffle" type="Button" parent="Panel/Control/MainBox" unique_id=883318063]
-layout_mode = 2
-size_flags_horizontal = 3
-tooltip_text = "Shuffle"
-icon = ExtResource("10_0riwu")
-icon_alignment = 1
-
-[node name="SecBox" type="HBoxContainer" parent="Panel/Control" unique_id=190441136]
-layout_mode = 2
-
-[node name="TickBox" type="HBoxContainer" parent="Panel/Control/SecBox" unique_id=1865251884]
-layout_mode = 2
-
-[node name="IconBox" type="AspectRatioContainer" parent="Panel/Control/SecBox/TickBox" unique_id=1616096619]
-layout_mode = 2
-
-[node name="TickIcon" type="Button" parent="Panel/Control/SecBox/TickBox/IconBox" unique_id=1862774080]
-layout_mode = 2
-tooltip_text = "Swapped"
-icon = ExtResource("11_bo8i8")
-flat = true
-
-[node name="TickPanel" type="PanelContainer" parent="Panel/Control/SecBox/TickBox" unique_id=645289445]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_p6r8x")
-
-[node name="Ticks" type="Label" parent="Panel/Control/SecBox/TickBox/TickPanel" unique_id=943068839]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "0000"
-horizontal_alignment = 2
-
-[node name="TypeBox" type="HBoxContainer" parent="Panel/Control/SecBox" unique_id=1264108606]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="IconBox" type="AspectRatioContainer" parent="Panel/Control/SecBox/TypeBox" unique_id=1179158437]
-layout_mode = 2
-
-[node name="TypeIcon" type="Button" parent="Panel/Control/SecBox/TypeBox/IconBox" unique_id=978445903]
-layout_mode = 2
-tooltip_text = "Sorting Type"
-icon = ExtResource("12_sa8g0")
-flat = true
-
-[node name="SorterType" type="OptionButton" parent="Panel/Control/SecBox/TypeBox" unique_id=879760772]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="IgnoreBox" type="HBoxContainer" parent="Panel/Control/SecBox" unique_id=848114193]
-layout_mode = 2
-
-[node name="IconBox" type="AspectRatioContainer" parent="Panel/Control/SecBox/IgnoreBox" unique_id=304879327]
-layout_mode = 2
-
-[node name="IgnoreIcon" type="Button" parent="Panel/Control/SecBox/IgnoreBox/IconBox" unique_id=927988892]
-layout_mode = 2
-tooltip_text = "Ignore Visual Updates"
-icon = ExtResource("13_qu6wu")
-flat = true
-
-[node name="IgnoreVisup" type="CheckButton" parent="Panel/Control/SecBox/IgnoreBox" unique_id=1035033181]
-layout_mode = 2
-
-[node name="ZoomBox" type="HBoxContainer" parent="Panel/Control" unique_id=1084249211]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="IconBox" type="AspectRatioContainer" parent="Panel/Control/ZoomBox" unique_id=1938294528]
-layout_mode = 2
-
-[node name="ZoomIcon" type="Button" parent="Panel/Control/ZoomBox/IconBox" unique_id=1530700070]
-layout_mode = 2
-icon = ExtResource("13_qcb6k")
-flat = true
-
-[node name="Zoom" type="Range" parent="Panel/Control/ZoomBox" unique_id=209535586]
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 2
-auto_translate_mode = 0
-editor_description = ""
-visible = true
-modulate = Color(1, 1, 1, 1)
-self_modulate = Color(1, 1, 1, 1)
-show_behind_parent = false
-top_level = false
-clip_children = 0
-light_mask = 1
-visibility_layer = 1
-z_index = 0
-z_as_relative = true
-y_sort_enabled = false
-texture_filter = 0
-texture_repeat = 0
-material = null
-use_parent_material = false
-clip_contents = false
-custom_minimum_size = Vector2(0, 0)
-layout_direction = 0
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-size_flags_stretch_ratio = 1.0
-localize_numeral_system = true
-tooltip_text = ""
-tooltip_auto_translate_mode = 0
-focus_neighbor_left = NodePath("")
-focus_neighbor_top = NodePath("")
-focus_neighbor_right = NodePath("")
-focus_neighbor_bottom = NodePath("")
-focus_next = NodePath("")
-focus_previous = NodePath("")
-focus_mode = 0
-focus_behavior_recursive = 0
-mouse_filter = 0
-mouse_behavior_recursive = 0
-mouse_force_pass_scroll_events = true
-mouse_default_cursor_shape = 6
-accessibility_name = ""
-accessibility_description = ""
-accessibility_live = 0
-accessibility_controls_nodes = Array[NodePath]([])
-accessibility_described_by_nodes = Array[NodePath]([])
-accessibility_labeled_by_nodes = Array[NodePath]([])
-accessibility_flow_to_nodes = Array[NodePath]([])
-theme = null
-theme_type_variation = &""
-min_value = 0.0
-max_value = 1.0
-step = 0.001
-page = 1.0
-value = 0.0
-exp_edit = false
-rounded = false
-allow_greater = false
-allow_lesser = false
-script = ExtResource("14_5m3lx")
-metadata/_custom_type_script = "uid://b6dixu08hmcdq"
+[node name="SortServerControlPanel" type="PanelContainer" parent="." unique_id=178426394 node_paths=PackedStringArray("server", "monitor")]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 223.0
+offset_bottom = 109.0
+script = ExtResource("3_1kw81")
+server = NodePath("../SortServer")
+auto_hide = true
+monitor = NodePath("../Monitor")
+metadata/_custom_type_script = "uid://bmhhmh5hgedva"
