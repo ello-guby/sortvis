@@ -1,4 +1,4 @@
-@tool class_name SortServerControlPanel extends Control
+@tool class_name SortServerControlPanel extends PanelContainer
 ## A panel to control a [SortServer]
 ##
 ## [SortServerDataMonitor] control is supported, by setting the
